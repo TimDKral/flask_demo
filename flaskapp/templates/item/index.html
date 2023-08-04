@@ -1,0 +1,14 @@
+{% block content %}
+    <h1>{% block title %} Items catalog {% endblock %}</h1>
+    <hr>
+
+    {% for item in items %}
+        <h2>{{ item['item_name'] }}</h2>
+        <p>{{ item['item_description'] }}</p>
+        <p>Created on {{ item['created'] }}
+        <br>
+        <p><i>Item ID: {{ item['id'] }}</i></p>
+        <hr>
+    {% endfor %}
+
+{% endblock %}
