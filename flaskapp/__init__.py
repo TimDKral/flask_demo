@@ -1,5 +1,4 @@
 import os
-
 from flask import Flask
 
 # Swagger
@@ -7,6 +6,7 @@ from apispec import APISpec
 from apispec.ext.marshmallow import MarshmallowPlugin
 from flask_apispec.extension import FlaskApiSpec
 from flask_restful import Resource, Api
+
 
 def create_app(test_config=None):
     # create and configure the app
@@ -28,9 +28,6 @@ def create_app(test_config=None):
     })
     
     api = Api(app)
-    docs = FlaskApiSpec(app)
-    #docs.register(AwesomeAPI)
-
 
     if test_config is None:
         # load the instance config, if it exists, when not testing
@@ -52,6 +49,8 @@ def create_app(test_config=None):
     app.register_blueprint(items.bp)
     app.add_url_rule('/', endpoint='index')
     
+    docs = FlaskApiSpec(app)
+    #docs.register(items)
     #api.add_resource(items.bp, '/items')
 
     return app
